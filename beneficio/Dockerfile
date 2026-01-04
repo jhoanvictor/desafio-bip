@@ -1,6 +1,5 @@
 FROM quay.io/wildfly/wildfly:37.0.0.Final-jdk21
 
-
 RUN /opt/jboss/wildfly/bin/add-user.sh -u admin -p "admin123!" --silent
 RUN /opt/jboss/wildfly/bin/add-user.sh -a -u ejbuser -p "ejb123!" --silent
 
