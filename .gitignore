@@ -1,0 +1,115 @@
+# ==========================================
+# GERAL / SISTEMA OPERACIONAL
+# ==========================================
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+*.log
+*.tmp
+
+# ==========================================
+# IDEs (IntelliJ, VS Code, Eclipse, NetBeans)
+# ==========================================
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# VS Code
+.vscode/
+*.code-workspace
+.history/
+
+# Eclipse
+.metadata
+.classpath
+.project
+.settings/
+bin/
+
+# NetBeans
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# ==========================================
+# JAVA & SPRING BOOT (Back-end)
+# ==========================================
+# Arquivos compilados
+*.class
+
+# Empacotados
+*.jar
+*.war
+*.ear
+*.nar
+
+# Maven (Build)
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+
+# Gradle (Caso use Gradle no futuro)
+.gradle/
+build/
+
+# Spring Boot
+help.md
+!src/main/resources/application.properties
+!src/main/resources/application.yml
+# Se usar arquivos de propriedades com senhas, descomente a linha abaixo:
+# application-secrets.properties
+
+# Logs da aplicação Spring
+logs/
+*.log
+
+# ==========================================
+# ANGULAR & NODE.JS (Front-end)
+# ==========================================
+# Dependências do Node (PESADÍSSIMO - Jamais comitar)
+node_modules/
+
+# Cache do Angular (versões novas)
+.angular/
+
+# Build de produção (O resultado do 'ng build')
+/dist
+/dist/
+www/
+
+# Logs de erro do NPM/Yarn
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Arquivos de ambiente locais (se houver segredos)
+.env
+.env.local
+
+# Testes / Coverage
+coverage/
+.nyc_output/
+
+# Editores temporários
+*~
+*.swp
+*.swo
+
+# ==========================================
+# OUTROS
+# ==========================================
+# Arquivos de backup gerados automaticamente
+*.bak
+*.old

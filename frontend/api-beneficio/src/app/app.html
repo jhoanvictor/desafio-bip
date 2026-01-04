@@ -1,0 +1,108 @@
+<div class="container mt-5">
+  <h1 class="mb-4 text-primary">Sistema de Benefícios</h1>
+
+    <div *ngIf="msgSucesso" class="alert alert-success alert-dismissible fade show">
+    {{ msgSucesso }}
+    <button type="button" class="btn-close" (click)="msgSucesso=''"></button>
+  </div>
+  <div *ngIf="msgErro" class="alert alert-danger alert-dismissible fade show">
+    {{ msgErro }}
+    <button type="button" class="btn-close" (click)="msgErro=''"></button>
+  </div>
+
+  <div class="row">
+    <div class="col-md-5">
+
+      <div *ngIf="modoTransfer" class="card shadow border-warning mb-4">
+        <div class="card-header bg-warning text-dark">
+          <strong>Realizar Transferência</strong>
+        </div>
+        <div class="card-body">
+          <p class="text-muted">
+            Transferindo de: <strong>ID {{ dadosTransfer.fromId }}</strong>
+          </p>
+
+          <label class="form-label">Para qual benefício (Destino)?</label>
+          <select class="form-select mb-3" [(ngModel)]="dadosTransfer.toId">
+            <option [ngValue]="0" selected disabled>Selecione o destino...</option>
+            <option *ngFor="let b of listaDestinos" [ngValue]="b.id">
+              {{ b.nome }} (Saldo: {{ b.valor | currency:'BRL' }})
+            </option>
+          </select>
+
+          <label class="form-label">Valor a transferir:</label>
+          <input type="text" [(ngModel)]="valorInput" class="form-control mb-3" placeholder="150,90">
+
+          <div class="d-grid gap-2">
+            <button type="button" class="btn btn-warning fw-bold" (click)="confirmar()">
+              Confirmar Transferência
+            </button>
+            <button class="btn btn-secondary" (click)="cancelar()">
+              Cancelar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="!modoTransfer" class="card shadow">
+        <div class="card-header bg-primary text-white">
+          Novo Benefício
+        </div>
+        <div class="card-body">
+          <label>Nome:</label>
+          <input type="text" [(ngModel)]="novoBeneficio.nome" class="form-control mb-2">
+
+          <label>Descrição:</label>
+          <input type="text" [(ngModel)]="novoBeneficio.descricao" class="form-control mb-2">
+
+          <label>Saldo Inicial:</label>
+          <input type="text" placeholder="150,90" [(ngModel)]="valorInput" class="form-control mb-2">
+
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" [(ngModel)]="novoBeneficio.ativo" id="ativo">
+            <label class="form-check-label" for="ativo">Ativo</label>
+          </div>
+
+          <button type="button" class="btn btn-primary w-100" (click)="salvar()">Cadastrar</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-md-7">
+      <div class="card shadow">
+        <div class="card-body">
+          <h5 class="card-title">Seus Benefícios</h5>
+          <table class="table table-hover align-middle">
+            <thead class="table-light">
+            <tr>
+              <th>Nome</th>
+              <th>Saldo</th>
+              <th class="text-end">Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let b of listaBeneficios">
+              <td>
+                <strong>{{ b.nome }}</strong><br>
+                <small class="text-muted">{{ b.descricao }}</small>
+              </td>
+              <td [class.text-danger]="b.valor < 0" [class.text-success]="b.valor >= 0">
+                <span class="fs-5">{{ b.valor | currency:'BRL' }}</span>
+              </td>
+              <td class="text-end">
+                <button class="btn btn-sm btn-outline-warning me-2" (click)="abrirTransferencia(b)">
+                  Transferir
+                </button>
+                <button class="btn btn-sm btn-outline-danger" (click)="deletar(b.id!)">
+                  Excluir
+                </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
