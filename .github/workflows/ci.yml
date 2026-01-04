@@ -13,6 +13,6 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       - name: Build ejb
-        run: mvn -B -f beneficio clean package
+        run: mvn -B -f beneficio clean install
       - name: Build backend
         run: mvn -B -f api clean package
