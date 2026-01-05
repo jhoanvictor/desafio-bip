@@ -109,7 +109,7 @@ mvn spring-boot:run
 
 1. Acesse a pasta do frontend em um novo terminal:
 ```bash
-cd frontend-app # (Ajuste para o nome da sua pasta)
+cd frontend/api-beneficio
 
 ```
 
